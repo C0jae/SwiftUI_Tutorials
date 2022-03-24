@@ -18,11 +18,19 @@ struct LandmarkRow: View {
             Text(landmark.name)
             
             Spacer()    // 해당 위치 기준 양 끝점으로 벌리기
+            
+            // isFavorite이 True 이면 별모양 띄우기
+            if landmark.isFavorite {
+                Image(systemName: "star.fill")
+                    .foregroundColor(.yellow)
+            }
         }
     }
 }
 
 struct LandmarkRow_Previews: PreviewProvider {
+    static var landmarks = ModelData().landmarks
+    
     static var previews: some View {
         Group {
             // landmark를 선언했으므로 파라미터 맞춰주기(landmarks)
